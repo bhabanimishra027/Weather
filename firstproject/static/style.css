@@ -1,0 +1,229 @@
+:root {
+  --white: #ffffff;
+  --off-white: #e5e5e5;
+  --transp-white-1: rgba(255, 255, 255, 0.25);
+  --transp-white-2: rgba(255, 255, 255, 0.18);
+  --blue-1: #62b8f5;
+  --blue-2: #4475ef;
+  --shadow: rgba(3, 46, 87, 0.2);
+  --text-color-dark: #052933;
+  --text-color-light: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  padding: 1rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  /* Optional: Add a smooth transition for background image change if using JS for dynamic backgrounds */
+  /* transition: background-image 0.5s ease-in-out; */
+}
+
+h1 {
+  text-align: center;
+  color: var(--text-color-dark);
+  margin-bottom: 15px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--transp-white-2);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--transp-white-1);
+  color: var(--text-color-dark);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  /* This was added previously: Centers the form elements horizontally */
+}
+
+input[type="text"] {
+  /* Removed 'flex: 1 1 auto;' here */
+  width: 70%;
+  /* Give it a default width for larger screens */
+  max-width: 400px;
+  /* Prevent it from getting too wide */
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  color: var(--text-color-dark);
+  font-size: 1rem;
+  min-width: 180px;
+  /* Ensure it doesn't get too small on its own line */
+}
+
+/* Style for placeholder text */
+input[type="text"]::placeholder {
+  color: rgba(5, 41, 51, 0.7);
+}
+
+
+.btn {
+  padding: 0.8rem 1.2rem;
+  background-color: transparent;
+  border: 2px solid var(--blue-2);
+  color: var(--blue-2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: var(--blue-2);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+
+.weather {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.left,
+.right {
+  flex: 1 1 45%;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: var(--transp-white-2);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--transp-white-1);
+  text-align: center;
+  box-shadow: 0 4px 10px var(--shadow);
+  min-width: 250px;
+}
+
+.temp {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.city {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  color: var(--text-color-dark);
+}
+
+.icon img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.condition p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* Styles for Django Messages (Error/Success) */
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.messages li {
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.messages .error {
+  background-color: #ffcccc;
+  color: #cc0000;
+  border: 1px solid #cc0000;
+}
+
+.messages .success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .weather {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  input[type="text"],
+  .btn {
+    width: 100%;
+    max-width: none;
+    /* ADD THIS LINE! This is the missing piece for full mobile width */
+  }
+
+  .left,
+  .right {
+    flex: 1 1 100%;
+  }
+
+  .container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .temp {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0.5rem;
+    padding: 0.8rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .temp {
+    font-size: 2.2rem;
+  }
+
+  .city {
+    font-size: 1.1rem;
+  }
+
+  .condition p {
+    font-size: 0.95rem;
+  }
+}
